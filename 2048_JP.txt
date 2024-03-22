@@ -1,0 +1,321 @@
+#include <stdio.h>
+#include <stdlib.h>
+//declaration ou prototype
+void initialisation(int tab[4][4])
+{
+    int i,j;
+    for(i=0;i<4;i++)
+    {
+        for(j=0;j<4;j++)
+        {
+            tab[i][j]=0;
+        }
+    }
+    int i1alea,j1alea,i2alea,j2alea;
+    i1alea=rand()%4;
+    j1alea=rand()%4;
+    i2alea=rand()%4;
+    j2alea=rand()%4;
+    tab[i1alea][j1alea]=2;
+    tab[i2alea][j2alea]=2;
+
+}
+void afficher(int tab[4][4])
+{
+    int i,j;
+    for(i=0;i<4;i++)
+    {
+
+        for(j=0;j<4;j++)
+        {
+            printf("%d\t",tab[i][j]);
+        }
+         printf("\n\n");
+    }
+}
+void deplacementdroite(int tab[4][4])
+{
+    int i,j,c,n;
+    for(n=0;n<3;n++)
+    {
+        for(i=0;i<4;i++)
+        {
+            for(j=0;j<3;j++)
+            {
+
+                if(tab[i][j]!=0 &&tab[i][j+1]==0)
+                {
+                    c=0;
+                    c=tab[i][j];
+                    tab[i][j]=tab[i][j+1];
+                    tab[i][j+1]=c;
+
+                }
+            }
+        }
+    }
+    for(i=0;i<4;i++)
+        {
+            for(j=0;j<3;j++)
+            {
+
+                if(tab[i][j]==tab[i][j+1])
+                {
+                    tab[i][j+1]=tab[i][j]+tab[i][j+1];
+                    tab[i][j]=0;
+                }
+            }
+        }
+        for(n=0;n<3;n++)
+    {
+        for(i=0;i<4;i++)
+        {
+            for(j=0;j<3;j++)
+            {
+
+                if(tab[i][j]!=0 &&tab[i][j+1]==0)
+                {
+                    c=0;
+                    c=tab[i][j];
+                    tab[i][j]=tab[i][j+1];
+                    tab[i][j+1]=c;
+
+                }
+            }
+        }
+    }
+}
+void deplacementgauche(int tab[4][4])
+{
+    int i,j,c,n;
+    for(n=0;n<3;n++)
+    {
+        for(i=0;i<4;i++)
+        {
+            for(j=3;j>0;j--)
+            {
+
+                if(tab[i][j]!=0 &&tab[i][j-1]==0)
+                {
+                    c=0;
+                    c=tab[i][j];
+                    tab[i][j]=tab[i][j-1];
+                    tab[i][j-1]=c;
+
+                }
+            }
+        }
+    }
+    for(i=0;i<4;i++)
+        {
+            for(j=3;j>0;j--)
+            {
+
+                if(tab[i][j]==tab[i][j-1])
+                {
+                    tab[i][j-1]=2*tab[i][j];
+                    tab[i][j]=0;
+                }
+            }
+        }
+        for(n=0;n<3;n++)
+    {
+        for(i=0;i<4;i++)
+        {
+            for(j=3;j>0;j--)
+            {
+
+                if(tab[i][j]!=0 &&tab[i][j-1]==0)
+                {
+                    c=0;
+                    c=tab[i][j];
+                    tab[i][j]=tab[i][j-1];
+                    tab[i][j-1]=c;
+
+                }
+            }
+        }
+    }
+}
+void deplacementbas(int tab[4][4])
+{
+    int i,j,c,n;
+    for(n=0;n<3;n++)
+    {
+        for(j=0;j<4;j++)
+        {
+            for(i=0;i<3;i++)
+            {
+
+                if(tab[i][j]!=0 &&tab[i+1][j]==0)
+                {
+                    c=0;
+                    c=tab[i][j];
+                    tab[i][j]=tab[i+1][j];
+                    tab[i+1][j]=c;
+
+                }
+            }
+        }
+    }
+    for(j=0;j<4;j++)
+        {
+            for(i=0;i<3;i++)
+            {
+                    if(tab[i][j]==tab[i+1][j])
+                {
+                    tab[i+1][j]=tab[i+1][j]+tab[i][j];
+                    tab[i][j]=0;
+                }
+            }
+        }
+        for(n=0;n<3;n++)
+    {
+        for(j=0;j<4;j++)
+        {
+            for(i=0;i<3;i++)
+            {
+
+                if(tab[i][j]!=0 &&tab[i+1][j]==0)
+                {
+                    c=0;
+                    c=tab[i][j];
+                    tab[i][j]=tab[i+1][j];
+                    tab[i+1][j]=c;
+
+                }
+            }
+        }
+    }
+}
+void deplacementhaut(int tab[4][4])
+{
+    int i,j,c,n;
+    for(n=0;n<3;n++)
+    {
+        for(j=0;j<4;j++)
+        {
+            for(i=3;i>0;i--)
+            {
+
+                if(tab[i][j]!=0 &&tab[i-1][j]==0)
+                {
+                    c=0;
+                    c=tab[i][j];
+                    tab[i][j]=tab[i-1][j];
+                    tab[i-1][j]=c;
+
+                }
+            }
+        }
+    }
+    for(j=0;j<4;j++)
+        {
+            for(i=3;i>0;i--)
+            {
+
+                if(tab[i][j]==tab[i-1][j])
+                {
+                    tab[i-1][j]=tab[i-1][j]+tab[i][j];
+                    tab[i][j]=0;
+                }
+            }
+        }
+        for(n=0;n<3;n++)
+    {
+        for(j=0;j<4;j++)
+        {
+            for(i=3;i>0;i--)
+            {
+
+                if(tab[i][j]!=0 &&tab[i-1][j]==0)
+                {
+                    c=0;
+                    c=tab[i][j];
+                    tab[i][j]=tab[i-1][j];
+                    tab[i-1][j]=c;
+
+                }
+            }
+        }
+    }
+}
+int atteint(int tab[4][4])
+{
+    int i,j;
+    for(i=0;i<4;i++)
+    {
+        for(j=0;j<4;j++)
+        {
+            return tab[i][j];
+        }
+    }
+}
+int main()
+{
+    /*
+    printf("ialea vaut %d\n",ialea);
+    printf("jalea vaut %d\n",jalea);
+    return 0;*/
+
+    int plateau[4][4];//={1024,1024,2,2,0,0,0,0,2,2,2,2,0,0,0,0,0,0};
+    int n,a,b,i,j;
+    srand(time(NULL));
+    initialisation(plateau);
+    afficher(plateau);
+    int ialea,jalea,m=1;
+
+ while(1)
+  {
+
+         printf("4-Vers la gauche\n6-Vers la droite\n2-Vers le bas\n8-Vers le haut\n");
+    scanf("%d",&n);
+    switch (n)
+    {
+    case 4 :
+        {
+            deplacementgauche(plateau);
+            break;
+        }
+    case 6 :
+        {
+            deplacementdroite(plateau);
+            break;
+        }
+    case 2 :
+        {
+            deplacementbas(plateau);
+            break;
+        }
+    case 8 :
+        {
+             deplacementhaut(plateau);
+        break;
+        }
+    }
+    ialea=rand()%4;
+    jalea=rand()%4;
+
+    for(i=0;i<4;i++)
+    {
+        for(j=0;j<4;j++)
+        {
+            if(plateau[ialea][jalea]!=0)
+            {
+                ialea=rand()%4;
+                jalea=rand()%4;
+            }
+        }
+    }
+    plateau[ialea][jalea]=2;
+    afficher(plateau);
+    for(i=0;i<4;i++)
+        for(j=0;j<4;j++)
+            if(plateau[i][j]==2048)
+        {
+            printf("Tu as gagne");
+            return 0;
+        }
+   }
+return 0;
+}
